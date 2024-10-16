@@ -42,10 +42,10 @@ def cherche_occupant(lieu):
     return occupants
 
 def change_etat(animal_id, etat):
-    etats_autorisés = ['affamé', 'fatigué', 'repus', 'endormi']
+    etats_autorises = ['affamé', 'fatigué', 'repus', 'endormi']
     with open('animal.json','r', encoding='utf-8') as f:
         animals = json.load(f)
-    if etat in etats_autorisés:
+    if etat in etats_autorises:
         if animal_id in animals:
             animals[animal_id]['ETAT'] = etat
     json.dump(animals, open("animal.json", "w"), indent=4)
