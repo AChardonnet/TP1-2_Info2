@@ -40,16 +40,19 @@ def updateGui():
 def press(act):
     action = app.getRadioButton("etat")
     animal = app.getRadioButton("id_animal")
+    result = None
     match action:
         case 'nourrir':
-            controleur.nourrir(animal)
+            result = controleur.nourrir(animal)
         case 'divertir':
-            controleur.divertir(animal)
+            result = controleur.divertir(animal)
         case 'coucher':
-            controleur.coucher(animal)
+            result = controleur.coucher(animal)
         case 'reveiller':
-            controleur.reveiller(animal)
+            result = controleur.reveiller(animal)
     updateGui()
+    if result != True:
+        app.warningBox("Erreur !", result)
 
 animals = ['Tic', 'Tac', 'Totoro', 'Patrick', 'Pocahontas']
 etats = ['nourrir', 'divertir', 'coucher', 'reveiller']
