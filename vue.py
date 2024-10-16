@@ -4,32 +4,41 @@ import controleur
 
 def initGui():
     model.reset()
-    app.addLabel("en-tête", "Bienvenue à l'animalerie!")
+    app.addLabel("en-tête", "Bienvenue à l'animalerie!", colspan=2)
     app.setLabelBg("en-tête", "salmon")
     app.setLabelFg("en-tête", "white")
 
-    app.addLabel("tableau de bord", "Tableau de bord")
+    app.addLabel("tableau de bord", "Tableau de bord", colspan=2)
     app.setLabelBg("tableau de bord", "gray")
 
+    colors = ["lavender", None]
     for animal in animals:
-        app.addLabel(animal, f"{animal} : {model.lit_etat(animal)}, {model.lit_lieu(animal)}")
+        row = app.getRow()
+        app.addLabel(animal, f"{animal}", row, 0)
+        app.addLabel(animal + "_info", f"{model.lit_etat(animal)}, {model.lit_lieu(animal)}", row, 1)
+        app.setLabelAlign(animal, "left")
+        app.setLabelAlign(animal + "_info", "left")
+        app.setLabelBg(animal, colors[row % 2])
+        app.setLabelBg(animal + "_info", colors[row % 2])
 
-    app.addLabel("actions", "Actions")
+    app.addLabel("actions", "Actions", colspan=2)
     app.setLabelBg("actions", "gray")
 
-    app.addLabel("animal", "Animal")
+    row = app.getRow()
+
+    app.addLabel("animal", "Animal", row, 0)
     app.setLabelBg("animal", "lightgray")
 
-    for animal in animals:
-        app.addRadioButton("id_animal", animal)
+    for i in range(len(animals)):
+        app.addRadioButton("id_animal", animals[i], row + i + 1, 0)
 
-    app.addLabel("action", "Action")
+    app.addLabel("action", "Action", row, 1)
     app.setLabelBg("action", "lightgray")
 
-    for etat in etats:
-        app.addRadioButton("etat", etat)
+    for i in range(len(etats)):
+        app.addRadioButton("etat", etats[i], row + i + 1, 1)
 
-    app.addButton("go",  press)
+    app.addButton("go",  press, row + max(len(animals), len(etats)) + 1, colspan=2)
 
     app.go()
 
