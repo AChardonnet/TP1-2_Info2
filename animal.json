@@ -20,13 +20,13 @@
     "Totoro": {
         "RACE": "ili pika",
         "TYPE": "rongeur",
-        "ETAT": "repus",
-        "LIEU": "mangeoire"
+        "ETAT": "fatigu\u00e9",
+        "LIEU": "roue"
     },
     "Pocahontas": {
         "RACE": "opossum",
         "TYPE": "marsupial",
-        "ETAT": "affam\u00e9",
-        "LIEU": "liti\u00e8re"
+        "ETAT": "endormi",
+        "LIEU": "nid"
     }
 }

@@ -1,5 +1,13 @@
 import json
 
+def reset():
+    with open('orig/equipment.json','r', encoding='utf-8') as f:
+        equipement = json.load(f)
+    with open('orig/animal.json','r', encoding='utf-8') as f:
+        animals = json.load(f)
+    json.dump(animals, open("animal.json", "w"), indent=4)
+    json.dump(equipement, open("equipment.json", "w"), indent=4)
+
 def lit_etat(animal_id):
     with open('animal.json', "r", encoding='utf-8') as f:
         animals = json.load(f)
